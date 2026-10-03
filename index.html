@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>COSMIC VOYAGE — Meghana B R | 3D Interactive Portfolio</title>
+<meta name="description" content="Meghana B R — Computer Science and Engineering student, AI/ML and software development portfolio.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#030712] text-slate-100 antialiased">
+<div id="cursor-dot" class="hidden md:block"></div><div id="cursor-ring" class="hidden md:block"></div>
+<canvas id="webgl-canvas"></canvas>
+<div id="scroll-progress"></div>
+
+<header class="fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 py-4 pointer-events-none">
+ <div class="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
+  <a href="#sector-hero" class="nav-jump-link flex items-center gap-3 group">
+   <div class="relative w-8 h-8 rounded border border-cyan-500/40 bg-slate-950/80 flex items-center justify-center group-hover:border-cyan-400 transition-colors shadow-[0_0_12px_rgba(34,211,238,0.2)]"><div class="w-2.5 h-2.5 rounded-full bg-cyan-400 group-hover:scale-125 transition-transform"></div><div class="hud-corner-tl"></div><div class="hud-corner-br"></div></div>
+   <div><div class="font-orbitron text-sm font-bold tracking-widest text-white">MEGHANA B R</div><div class="font-mono text-[10px] tracking-widest text-cyan-400/80">CSE · AI/ML · SOFTWARE // FIELD-SYS</div></div>
+  </a>
+  <div class="hidden lg:flex items-center gap-6 font-mono text-[10px] tracking-widest text-slate-500"><span>SECTOR 01 // ORIGIN</span><span id="hud-coords">12°58′N 77°35′E // BENGALURU</span></div>
+  <div class="flex items-center gap-2"><button id="warp-btn" class="hud-btn">WARP 1.0</button><button id="audio-btn" class="hud-btn">AUDIO OFF</button><button id="menu-btn" class="lg:hidden hud-btn">MENU</button></div>
+ </div>
+ <nav id="mobile-nav" class="hidden lg:hidden mt-3 cosmic-panel rounded-lg p-3 flex-col gap-2 font-mono text-xs"><a href="#sector-hero">01 ORIGIN</a><a href="#sector-about">02 NEBULA</a><a href="#sector-projects">03 PLANETS</a><a href="#sector-milestones">04 TRAJECTORY</a><a href="#sector-contact">05 BEACON</a><a href="#sector-archive">06 ARCHIVE</a></nav>
+</header>
+
+<aside class="fixed right-5 top-1/2 -translate-y-1/2 z-30 hidden xl:flex flex-col items-end gap-3 pointer-events-auto"><div class="font-mono text-[9px] text-slate-600 tracking-widest mb-2">FLIGHT TRACKER</div><a href="#sector-hero" class="side-link active">01 ORIGIN</a><a href="#sector-about" class="side-link">02 NEBULA</a><a href="#sector-projects" class="side-link">03 PLANETS</a><a href="#sector-milestones" class="side-link">04 TRAJECTORY</a><a href="#sector-contact" class="side-link">05 BEACON</a><a href="#sector-archive" class="side-link">06 ARCHIVE</a><div class="h-32 w-1 bg-slate-800 rounded-full overflow-hidden mt-2"><div id="hud-progress-fill" class="w-full bg-cyan-400 shadow-[0_0_8px_#22d3ee]" style="height:0%"></div></div></aside>
+
+<main id="scroll-container" class="relative z-10">
+<section id="sector-hero" class="min-h-screen flex items-center justify-center px-4 sm:px-8 pt-24 pb-16">
+ <div class="max-w-6xl mx-auto w-full text-center relative">
+  <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-500/30 bg-slate-950/70 backdrop-blur-md text-xs font-mono text-cyan-300 mb-6 reveal-item"><span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span><span>B.E. CSE · 2ND YEAR · SEM 2 CGPA 9.63 // AI & SOFTWARE</span></div>
+  <h1 class="font-orbitron text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-white mb-6 uppercase reveal-item">MEGHANA <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 text-glow-cyan">B R</span></h1>
+  <p class="font-mono text-base sm:text-xl text-cyan-300/90 tracking-wide max-w-3xl mx-auto mb-6 reveal-item uppercase font-medium">Building practical technology with curiosity, creativity and code.</p>
+  <p class="text-sm sm:text-base text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed reveal-item">Computer Science & Engineering student at Sri Venkateshwara College of Engineering, Bengaluru, exploring AI/ML, software development, problem solving and technology that can make everyday systems more useful.</p>
+  <div class="flex flex-wrap items-center justify-center gap-4 mb-16 reveal-item"><a href="#sector-projects" class="primary-cta nav-jump-link">INSPECT MY PROJECTS <span>↗</span></a><a href="#sector-archive" class="secondary-cta nav-jump-link">OPEN RESUME & CERTIFICATES <span>↗</span></a><a href="#sector-contact" class="secondary-cta nav-jump-link">INITIALIZE TRANSMISSION <span>◉</span></a></div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto reveal-item">
+   <div class="cosmic-panel stat-card"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><b>9.63</b><span>SEM 2 CGPA</span></div>
+   <div class="cosmic-panel stat-card"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><b>9.45</b><span>SEM 1 CGPA</span></div>
+   <div class="cosmic-panel stat-card"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><b>3</b><span>FLAGSHIP PROJECTS</span></div>
+   <div class="cosmic-panel stat-card"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><b>AI + CODE</b><span>CORE DIRECTION</span></div>
+  </div>
+  <div class="mt-16 flex flex-col items-center gap-2 text-slate-500 font-mono text-xs tracking-widest reveal-item"><span>ENGAGE SUB-LIGHT DRIVE // SCROLL TO WARP</span><span class="text-cyan-400 text-xl animate-bounce">⌄</span></div>
+ </div>
+</section>
+
+<section id="sector-about" class="min-h-screen flex items-center justify-center px-4 sm:px-8 py-28">
+ <div class="max-w-6xl mx-auto w-full">
+  <div class="mb-14 text-center reveal-item"><div class="font-mono text-xs text-cyan-400 tracking-widest uppercase mb-2">SECTOR 02 // TECHNICAL CONSTELLATION</div><h2 class="font-orbitron text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">The Nebula <span class="text-cyan-400 text-glow-cyan">Core</span></h2><p class="text-slate-400 font-mono text-xs sm:text-sm mt-3 max-w-2xl mx-auto">A Computer Science student grounded in programming, AI/ML, software development, teamwork and continuous learning.</p></div>
+  <div class="about-panel cosmic-panel p-7 sm:p-9 rounded-2xl reveal-item mb-7"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><div class="grid md:grid-cols-[1.35fr_.65fr] gap-8"><div><div class="font-mono text-cyan-400 text-xs tracking-widest">ABOUT ME // MEGHANA B R</div><h3 class="font-orbitron text-2xl sm:text-3xl font-bold text-white mt-3 mb-4">Code. Create. Learn. Improve.</h3><p class="text-slate-300 leading-8 text-sm">I am a Computer Science and Engineering student who enjoys learning new technologies, solving programming problems and turning ideas into useful software projects. I am especially interested in AI/ML and software development, while continuously strengthening my programming and communication skills.</p><p class="text-slate-400 leading-7 text-sm mt-4">Outside academics, I enjoy reading books and listening to music. I am also a classical dancer and have participated in kho-kho and throwball, experiences that have strengthened my discipline, teamwork and ability to stay patient in challenging situations.</p></div><div class="telemetry"><div><span>COLLEGE</span><b>SVCE · BENGALURU</b></div><div><span>BRANCH</span><b>CSE</b></div><div><span>INTEREST</span><b>AI / ML</b></div><div><span>STRENGTH</span><b>PROBLEM SOLVING</b></div><div><span>LANGUAGES</span><b>ENGLISH · KANNADA</b></div></div></div></div>
+  <div id="skills-grid-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+   <div class="cosmic-panel p-6 rounded-xl relative overflow-hidden reveal-item skill-panel"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><h3 class="font-orbitron text-lg font-semibold text-white mb-3">Core Languages & Logic</h3><p class="text-sm text-slate-300 mb-4 leading-relaxed">Programming fundamentals, algorithms, structured problem solving and beginner-friendly development.</p><div class="chips"><span>C</span><span>Python</span><span>Java</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>DSA</span></div></div>
+   <div class="cosmic-panel p-6 rounded-xl relative overflow-hidden reveal-item skill-panel"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><h3 class="font-orbitron text-lg font-semibold text-white mb-3">AI / ML & Problem Solving</h3><p class="text-sm text-slate-300 mb-4 leading-relaxed">Exploring AI/ML concepts and applying logical thinking to real student projects.</p><div class="chips"><span>AI / ML</span><span>Machine Learning</span><span>Problem Solving</span><span>Logical Thinking</span><span>Automation</span></div></div>
+   <div class="cosmic-panel p-6 rounded-xl relative overflow-hidden reveal-item skill-panel"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><h3 class="font-orbitron text-lg font-semibold text-white mb-3">Modern Web & Developer Tools</h3><p class="text-sm text-slate-300 mb-4 leading-relaxed">Building interfaces and project workflows using modern web tools and version control.</p><div class="chips"><span>React</span><span>Node.js</span><span>Git</span><span>GitHub</span><span>VS Code</span><span>Google Colab</span></div></div>
+   <div class="cosmic-panel p-6 rounded-xl relative overflow-hidden reveal-item skill-panel"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><h3 class="font-orbitron text-lg font-semibold text-white mb-3">Human Skills & Interests</h3><p class="text-sm text-slate-300 mb-4 leading-relaxed">Skills developed through academics, activities and teamwork.</p><div class="chips"><span>Communication</span><span>Teamwork</span><span>Time Management</span><span>Classical Dance</span><span>Kho-Kho</span><span>Throwball</span></div></div>
+  </div>
+ </div>
+</section>
+
+<section id="sector-projects" class="min-h-screen flex items-center justify-center px-4 sm:px-8 py-28">
+ <div class="max-w-6xl mx-auto w-full">
+  <div class="mb-14 text-center reveal-item"><div class="font-mono text-xs text-cyan-400 tracking-widest uppercase mb-2">SECTOR 03 // CELESTIAL MECHANICS</div><h2 class="font-orbitron text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">Planetary <span class="text-cyan-400 text-glow-cyan">Architecture</span></h2><p class="text-slate-400 font-mono text-xs sm:text-sm mt-3 max-w-2xl mx-auto">Each planet represents one of Meghana's flagship builds. Select a dossier to inspect the system.</p></div>
+  <div class="project-stage cosmic-panel reveal-item">
+    <div class="stage-scanline"></div>
+    <div class="stage-topline"><span>ORBITAL PROJECT MATRIX</span><span>WEBGL // LIVE</span></div>
+    <div id="planet-stage"></div>
+    <div class="stage-project-label label-a"><i></i><span>01 // BLOODCONNECT</span></div>
+    <div class="stage-project-label label-b"><i></i><span>02 // CAMPUS MARKET</span></div>
+    <div class="stage-project-label label-c"><i></i><span>03 // FOOD SYSTEM</span></div>
+    <div class="stage-center-mark"><span>CORE</span><b>03</b></div>
+    <div class="stage-label">SCROLL / MOUSE // ORBITAL CONTROL ACTIVE</div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-7">
+   <article class="cosmic-panel p-6 rounded-xl project-card reveal-item" data-project-index="0"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><div class="flex items-center justify-between gap-2 mb-3"><span class="badge cyan">PLANET 01 // HEALTH NETWORK</span><span class="text-xs font-mono text-slate-400">AI + Full Stack</span></div><h3 class="font-orbitron text-xl font-bold text-white mb-2">BloodConnect</h3><p class="text-sm text-slate-300 mb-4 leading-relaxed">A proactive blood supply and emergency donor network connecting hospitals, blood banks, colleges, donors and blood seekers.</p><div class="text-xs font-mono text-cyan-400/90 mb-4">SHORTAGE PREDICTION // DONOR MATCHING // SOS WORKFLOW</div><div class="chips"><span>React</span><span>Node.js</span><span>JavaScript</span><span>AI/ML</span></div><button class="inspect-dossier-btn">INSPECT PROJECT DOSSIER</button></article>
+   <article class="cosmic-panel p-6 rounded-xl project-card reveal-item" data-project-index="1"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><div class="flex items-center justify-between gap-2 mb-3"><span class="badge purple">PLANET 02 // CAMPUS EXCHANGE</span><span class="text-xs font-mono text-slate-400">Web Platform</span></div><h3 class="font-orbitron text-xl font-bold text-white mb-2">Marketplace for College Students</h3><p class="text-sm text-slate-300 mb-4 leading-relaxed">A student-focused marketplace for buying, selling and exchanging useful products within the college community.</p><div class="text-xs font-mono text-cyan-400/90 mb-4">CAMPUS LISTINGS // BUYER-SELLER FLOW // REUSE</div><div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>React</span></div><button class="inspect-dossier-btn">INSPECT PROJECT DOSSIER</button></article>
+   <article class="cosmic-panel p-6 rounded-xl project-card reveal-item" data-project-index="2"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><div class="flex items-center justify-between gap-2 mb-3"><span class="badge pink">PLANET 03 // FOOD SYSTEM</span><span class="text-xs font-mono text-slate-400">Software Project</span></div><h3 class="font-orbitron text-xl font-bold text-white mb-2">Food Management System</h3><p class="text-sm text-slate-300 mb-4 leading-relaxed">A digital system designed to organize food-related records and workflows through a clear, accessible interface.</p><div class="text-xs font-mono text-cyan-400/90 mb-4">DIGITAL RECORDS // ORGANIZED WORKFLOW // ACCESS</div><div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Python</span></div><button class="inspect-dossier-btn">INSPECT PROJECT DOSSIER</button></article>
+  </div>
+ </div>
+</section>
+
+<section id="sector-milestones" class="min-h-screen flex items-center justify-center px-4 sm:px-8 py-28">
+ <div class="max-w-6xl mx-auto w-full">
+  <div class="mb-14 text-center reveal-item"><div class="font-mono text-xs text-cyan-400 tracking-widest uppercase mb-2">SECTOR 04 // EVENT HORIZON & FOUNDATION</div><h2 class="font-orbitron text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">Spacetime <span class="text-cyan-400 text-glow-cyan">Trajectory</span></h2><p class="text-slate-400 font-mono text-xs sm:text-sm mt-3">Academic progress, selections, participation and continuous learning.</p></div>
+  <div class="cosmic-panel p-7 sm:p-9 rounded-2xl reveal-item mb-7"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><div class="grid md:grid-cols-[1.4fr_.6fr] gap-8 items-center"><div><div class="font-mono text-cyan-400 text-xs tracking-widest">BACHELOR OF ENGINEERING</div><h3 class="font-orbitron text-2xl sm:text-3xl font-bold text-white mt-3">Computer Science & Engineering</h3><p class="text-slate-300 mt-2">Sri Venkateshwara College of Engineering · Bengaluru</p><p class="text-slate-400 mt-1">2nd Year · Autonomous Institution</p><div class="flex flex-wrap gap-3 mt-6"><span class="metric-pill">SEM 1 <b>9.45</b></span><span class="metric-pill">SEM 2 <b>9.63</b></span><span class="metric-pill">PUC <b>94.5%</b></span><span class="metric-pill">SSLC <b>97.12%</b></span></div></div><div class="academic-orb"><b>9.63</b><span>SEM 2 CGPA</span></div></div></div>
+  <div class="timeline">
+   <article class="timeline-card cosmic-panel reveal-item"><span>2026 — PRESENT</span><div><h3>ACADEMIC & PROJECT DEVELOPMENT</h3><p>Continuing B.E. Computer Science & Engineering while developing software projects and strengthening AI/ML, programming and problem-solving skills.</p></div><b>01</b></article>
+   <article class="timeline-card cosmic-panel reveal-item"><span>2026</span><div><h3>SMART INDIA HACKATHON</h3><p>Selected for the internal SIH process, working on problem-driven technology solutions and team-based innovation.</p></div><b>02</b></article>
+   <article class="timeline-card cosmic-panel reveal-item"><span>2026</span><div><h3>ISEP SELECTION</h3><p>Selected for ISEP, adding another collaborative technical experience to the academic journey.</p></div><b>03</b></article>
+   <article class="timeline-card cosmic-panel reveal-item"><span>2026</span><div><h3>HACKFINIX / INDUSTRIAL CYBERSECURITY</h3><p>Participated in the Cambridge Institute of Technology HackfiniX 2026 Industrial Cybersecurity event.</p></div><b>04</b></article>
+  </div>
+ </div>
+</section>
+
+
+<section id="sector-archive" class="min-h-screen flex items-center justify-center px-4 sm:px-8 py-28">
+ <div class="max-w-6xl mx-auto w-full">
+  <div class="mb-14 text-center reveal-item"><div class="font-mono text-xs text-cyan-400 tracking-widest uppercase mb-2">SECTOR 06 // VERIFIED ARCHIVE</div><h2 class="font-orbitron text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">Credentials <span class="text-cyan-400 text-glow-cyan">Vault</span></h2><p class="text-slate-400 font-mono text-xs sm:text-sm mt-3 max-w-2xl mx-auto">Resume, certificates and verified learning records — presented in the same flight-system interface.</p></div>
+
+  <div class="cosmic-panel p-6 sm:p-8 rounded-2xl reveal-item resume-vault mb-8">
+   <div class="hud-corner-tl"></div><div class="hud-corner-br"></div>
+   <div class="grid lg:grid-cols-[.72fr_1.28fr] gap-8 items-center">
+    <div class="resume-preview-wrap"><img src="assets/thumbs/resume.png" alt="Meghana B R Resume preview" class="resume-preview"><div class="resume-scan"></div></div>
+    <div>
+     <div class="font-mono text-cyan-400 text-xs tracking-widest">PRIMARY DOSSIER // RESUME</div>
+     <h3 class="font-orbitron text-2xl sm:text-3xl font-bold text-white mt-3 mb-4">MEGHANA B R — RESUME</h3>
+     <p class="text-slate-300 text-sm leading-7">A concise overview of my Computer Science education, technical skills, projects, achievements and learning experience.</p>
+     <div class="flex flex-wrap gap-3 mt-6"><a class="primary-cta" href="assets/resume.pdf" target="_blank">VIEW RESUME ↗</a><a class="secondary-cta" href="assets/resume.pdf" download>DOWNLOAD PDF ↓</a></div>
+     <div class="telemetry resume-telemetry mt-6"><div><span>PROGRAM</span><b>B.E. COMPUTER SCIENCE & ENGINEERING</b></div><div><span>COLLEGE</span><b>SVCE · BENGALURU</b></div><div><span>INTEREST</span><b>AI / ML · SOFTWARE</b></div></div>
+    </div>
+   </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+   <article class="cosmic-panel certificate-card reveal-item"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><div class="cert-image-wrap"><img src="assets/thumbs/security.png" alt="CompTIA Security Plus certificate"><span class="cert-scanline"></span></div><div class="cert-meta"><span class="badge cyan">CERT 01 // SECURITY</span><h3>CompTIA Security+</h3><p>TechA certificate of achievement · 17 Aug 2026</p><a href="assets/certificate-security.pdf" target="_blank" class="secondary-cta">OPEN CERTIFICATE ↗</a></div></article>
+   <article class="cosmic-panel certificate-card reveal-item"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><div class="cert-image-wrap"><img src="assets/thumbs/ey.png" alt="EY Technology Risk virtual job simulation certificate"><span class="cert-scanline"></span></div><div class="cert-meta"><span class="badge purple">CERT 02 // RISK</span><h3>EY Technology Risk</h3><p>Forage virtual job simulation · 21 Aug 2026</p><a href="assets/certificate-ey.pdf" target="_blank" class="secondary-cta">OPEN CERTIFICATE ↗</a></div></article>
+   <article class="cosmic-panel certificate-card reveal-item"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><div class="cert-image-wrap"><img src="assets/thumbs/tata.png" alt="Tata Data Visualisation certificate"><span class="cert-scanline"></span></div><div class="cert-meta"><span class="badge pink">CERT 03 // DATA</span><h3>Tata Data Visualisation</h3><p>Empowering Business with Effective Insights · 15 Aug 2026</p><a href="assets/certificate-tata.pdf" target="_blank" class="secondary-cta">OPEN CERTIFICATE ↗</a></div></article>
+   <article class="cosmic-panel certificate-card reveal-item"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><div class="cert-image-wrap"><img src="assets/isep-certificate.jpeg" alt="ISEP certificate"></div><div class="cert-meta"><span class="badge cyan">CERT 04 // ISEP</span><h3>ISEP Certificate</h3><p>ISEP selection / participation record</p><a href="assets/isep-certificate.jpeg" target="_blank" class="secondary-cta">VIEW CERTIFICATE ↗</a></div></article>
+   <article class="cosmic-panel certificate-card reveal-item"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><div class="cert-image-wrap"><img src="assets/cambridge-hackfinix.png" alt="Cambridge Institute of Technology HackfiniX 2026 Industrial Cybersecurity certificate"></div><div class="cert-meta"><span class="badge purple">CERT 05 // CYBER</span><h3>HackfiniX 2026</h3><p>Cambridge Institute of Technology · Industrial Cybersecurity</p><a href="assets/cambridge-hackfinix.png" target="_blank" class="secondary-cta">VIEW CERTIFICATE ↗</a></div></article>
+  </div>
+  <div class="mt-8 font-mono text-[10px] text-slate-600 text-center tracking-widest reveal-item">ARCHIVE STATUS // 05 CERTIFICATE RECORDS + 01 RESUME // ACCESS VERIFIED LOCALLY</div>
+ </div>
+</section>
+
+<section id="sector-contact" class="min-h-screen flex items-center justify-center px-4 sm:px-8 py-28">
+ <div class="max-w-5xl mx-auto w-full">
+  <div class="mb-14 text-center reveal-item"><div class="font-mono text-xs text-cyan-400 tracking-widest uppercase mb-2">SECTOR 05 // QUANTUM COMMS LINK</div><h2 class="font-orbitron text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">Subspace <span class="text-cyan-400 text-glow-cyan">Transmission</span></h2><p class="text-slate-400 font-mono text-xs sm:text-sm mt-3 max-w-2xl mx-auto">Have an opportunity, project idea or collaboration in mind? Let's connect.</p></div>
+  <div class="cosmic-panel p-7 sm:p-9 rounded-2xl reveal-item"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><div class="grid md:grid-cols-2 gap-8"><div><div class="contact-block"><small>DIRECT EMAIL BEACON</small><a href="mailto:meghana10092007@gmail.com">meghana10092007@gmail.com</a><button id="copy-email">COPY EMAIL</button></div><div class="contact-block"><small>TELEPHONE & COORDINATES</small><a href="tel:+919380542398">+91 9380542398</a><span>Vidyanagar, Bengaluru, India</span></div><div class="contact-block"><small>LINKEDIN UPLINK</small><a href="https://www.linkedin.com/in/meghana-b-r-17b511386/" target="_blank">linkedin.com/in/meghana-b-r-17b511386</a></div><div class="contact-block"><small>GITHUB UPLINK</small><a href="https://github.com/meghana10092007-debug" target="_blank">github.com/meghana10092007-debug</a></div></div>
+   <form id="contact-form" class="grid gap-4"><input required placeholder="TRANSMITTING OPERATOR / NAME"><input required type="email" placeholder="SUBSPACE COMMS ADDRESS / EMAIL"><textarea required rows="6" placeholder="MISSION PAYLOAD / MESSAGE"></textarea><button class="primary-cta justify-center" type="submit">TRANSMIT FREQUENCY <span>↗</span></button><p id="form-status" class="font-mono text-xs text-cyan-400 hidden">Transmission prepared — your email client will open.</p></form>
+  </div></div>
+  <div class="cosmic-panel p-6 sm:p-8 rounded-2xl mt-7 reveal-item"><div class="hud-corner-tl"></div><div class="hud-corner-br"></div><div class="flex flex-col md:flex-row items-center justify-between gap-6"><div><div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded text-[10px] font-mono uppercase bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 mb-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>ACTIVE REPOSITORIES & SOURCE CODE</div><h3 class="font-orbitron text-xl font-bold text-white">github.com/meghana10092007-debug</h3><p class="text-sm text-slate-400 mt-2 max-w-xl">Projects, experiments and learning work built throughout my Computer Science journey.</p></div><a class="primary-cta" target="_blank" href="https://github.com/meghana10092007-debug">LAUNCH GITHUB PROFILE ↗</a></div><div class="flex flex-wrap gap-2 mt-6"><span class="repo-tag">bloodconnect</span><span class="repo-tag">college-marketplace</span><span class="repo-tag">food-management</span><span class="repo-tag">ai-ml-learning</span></div></div>
+  <div class="mt-12 text-center font-mono text-xs text-slate-600 space-y-3"><div class="flex flex-wrap items-center justify-center gap-4"><a href="https://github.com/meghana10092007-debug" target="_blank" class="hover:text-cyan-400">github.com/meghana10092007-debug</a><span>•</span><a href="mailto:meghana10092007@gmail.com" class="hover:text-cyan-400">meghana10092007@gmail.com</a><span>•</span><a href="tel:+919380542398" class="hover:text-cyan-400">+91 9380542398</a></div><p>© 2026 MEGHANA B R // CSE · AI/ML · SOFTWARE SYSTEMS. ALL RIGHTS RESERVED.</p><p class="text-[11px] text-slate-700">RENDERED IN THREE.JS · GSAP-STYLE SCROLL CHOREOGRAPHY · INTERACTIVE WEBGL</p></div>
+ </div>
+</section>
+</main>
+
+<div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6"><div id="modal-backdrop" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md"></div><div class="modal-panel relative w-full max-w-2xl cosmic-panel rounded-2xl p-6 sm:p-8 z-10 max-h-[90vh] overflow-y-auto"><button id="modal-close" class="absolute top-4 right-4 text-2xl text-slate-400 hover:text-white">×</button><div id="modal-badge" class="badge cyan mb-3 inline-block">PLANET // TYPE</div><h2 id="modal-title" class="font-orbitron text-2xl sm:text-3xl font-black text-white mb-1">PROJECT</h2><p id="modal-subtitle" class="font-mono text-sm text-cyan-400 mb-4"></p><p id="modal-desc" class="text-sm text-slate-300 leading-relaxed mb-6"></p><div class="grid md:grid-cols-2 gap-4"><div class="detail-box"><h4>CORE SYSTEMS</h4><ul id="modal-systems"></ul></div><div class="detail-box"><h4>TECH STACK</h4><div id="modal-tech" class="chips"></div></div></div><a id="modal-github" target="_blank" class="primary-cta mt-6 inline-flex">OPEN GITHUB ↗</a></div></div>
+
+<div id="loader"><div class="loader-core"></div><div class="loader-text">INITIALIZING MEGHANA // COSMIC VOYAGE</div><small>LOADING 3D FIELD SYSTEMS</small></div>
+<script src="https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="script.js"></script>
+</body></html>
